@@ -1,12 +1,12 @@
 import { call, put, takeLatest } from 'redux-saga/effects';
-import { loginActions, googleLoginActions } from '../actions/actions';
+import { loginActions } from '../actions/actions';
 import history from '../../router/history'
 import api from '../../api'
 
-function fetchLogin(user, password) {
+function fetchLogin(email, password) {
   return api.auth.login({
-    "user": user,
-    "password": password
+    email,
+    password
   })
 }
 
@@ -18,18 +18,6 @@ function* login({ payload: { email, password } }) {
   } catch (e) {
     yield put(loginActions.failed());
   }
-}
-
-function* googleLogin({ payload: { profileObj } }) {
-  try {
-    yield put(googleLoginActions.succeed(profileObj))
-  } catch (e) {
-    yield put(googleLoginActions.failed())
-  }
-}
-
-export function* googleLoginWatcher() {
-  yield takeLatest(googleLoginActions.processing, googleLogin)
 }
 
 export function* loginSagaWatcher() {

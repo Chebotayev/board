@@ -3,7 +3,6 @@ import { addBoard } from '../actions/actions';
 
 function* addNewBoard({ payload }) {
   try {
-    console.log(payload)
     yield put(addBoard.succeed({...payload}))
   } catch (e) {
     yield put(addBoard.failed())

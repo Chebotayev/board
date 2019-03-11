@@ -2,7 +2,7 @@ import { handleActions, combineActions } from 'redux-actions';
 import { registrationActions, loginActions, googleLoginActions, googleLogoutActions } from '../actions/actions'
 
 const initialState = {
-  user: {},
+  user: '',
   fetching: false,
   isAuthenticated: false
 }
@@ -14,7 +14,7 @@ const userAuth = handleActions({
     state,
     { payload }
   ) => (
-      { ...state, user: payload, isAuthenticated: true, fetching: false }
+      { ...state, user: payload.email, isAuthenticated: true, fetching: false }
     ),
   [combineActions(registrationActions.failed, loginActions.failed, googleLoginActions.failed)]:
     state => ({ ...state, fetching: false, isAuthenticated: false }),

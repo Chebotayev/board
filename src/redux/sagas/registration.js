@@ -3,9 +3,9 @@ import { registrationActions } from '../actions/actions';
 import history from '../../router/history';
 import api from '../../api';
 
-function fetchRegistration(user, password) {
+function fetchRegistration(email, password) {
   return api.auth.registration({
-    user,
+    email,
     password,
   });
 }
@@ -21,6 +21,6 @@ function* registration({ payload: { email, password } }) {
   }
 }
 
-export default function* registrationSagaWatcher() {
+export function* registrationSagaWatcher() {
   yield takeLatest(registrationActions.processing, registration);
 }
