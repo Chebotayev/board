@@ -22,7 +22,8 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test"
+    "test": "react-scripts test",
+    "heroku-postbuild": "npm run build"
   },
   "browserslist": [
     ">0.2%",
