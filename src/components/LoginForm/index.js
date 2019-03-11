@@ -1,6 +1,6 @@
 import React from 'react';
 import { Form, Field } from 'react-final-form'
-import { loginActions } from '../../redux/actions/actions';
+import { loginActions } from '../../redux/actions';
 import { connect } from 'react-redux'
 
 const LoginForm = ({ loginProcessing }) => {

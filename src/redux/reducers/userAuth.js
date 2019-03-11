@@ -1,5 +1,5 @@
 import { handleActions, combineActions } from 'redux-actions';
-import { registrationActions, loginActions, googleLoginActions, logoutActions } from '../actions/actions'
+import { registrationActions, loginActions, googleLoginActions, logoutActions } from '../actions'
 
 const initialState = {
   user: '',

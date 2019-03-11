@@ -1,5 +1,5 @@
 import { call, put, takeLatest } from 'redux-saga/effects';
-import { loginActions } from '../actions/actions';
+import { loginActions } from '../actions';
 import history from '../../router/history'
 import api from '../../api'
 

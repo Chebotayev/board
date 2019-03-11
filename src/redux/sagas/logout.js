@@ -1,5 +1,5 @@
 import { put, takeLatest } from 'redux-saga/effects';
-import { logoutActions } from '../actions/actions';
+import { logoutActions } from '../actions';
 
 function* logout() {
   try {

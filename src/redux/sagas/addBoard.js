@@ -1,14 +1,14 @@
 import { put, takeLatest } from 'redux-saga/effects';
-import { addBoard } from '../actions/actions';
+import { addBoardActions } from '../actions';
 
-function* addNewBoard({ payload }) {
+function* addBoard({ payload }) {
   try {
-    yield put(addBoard.succeed({...payload}))
+    yield put(addBoardActions.succeed({...payload}))
   } catch (e) {
-    yield put(addBoard.failed())
+    yield put(addBoardActions.failed())
   }
 }
 
 export function* addBoardWatcher() {
-  yield takeLatest(addBoard.processing, addNewBoard)
+  yield takeLatest(addBoardActions.processing, addBoard)
 }
