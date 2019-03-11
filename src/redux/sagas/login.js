@@ -14,6 +14,7 @@ function* login({ payload: { email, password } }) {
   try {
     const response = yield call(fetchLogin, email, password);
     yield put(loginActions.succeed(response.data));
+    localStorage.setItem('token', response.data.token);
     history.push('/');
   } catch (e) {
     yield put(loginActions.failed());

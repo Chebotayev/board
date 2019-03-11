@@ -1,5 +1,5 @@
 import { handleActions, combineActions } from 'redux-actions';
-import { registrationActions, loginActions, googleLoginActions, googleLogoutActions } from '../actions/actions'
+import { registrationActions, loginActions, googleLoginActions, logoutActions } from '../actions/actions'
 
 const initialState = {
   user: '',
@@ -8,7 +8,7 @@ const initialState = {
 }
 
 const userAuth = handleActions({
-  [combineActions(registrationActions.processing, loginActions.processing, googleLoginActions.processing, googleLogoutActions.processing)]:
+  [combineActions(registrationActions.processing, loginActions.processing, googleLoginActions.processing, logoutActions.processing)]:
     state => ({ ...state, fetching: true }),
   [combineActions(registrationActions.succeed, googleLoginActions.succeed, loginActions.succeed)]: (
     state,
@@ -18,8 +18,8 @@ const userAuth = handleActions({
     ),
   [combineActions(registrationActions.failed, loginActions.failed, googleLoginActions.failed)]:
     state => ({ ...state, fetching: false, isAuthenticated: false }),
-  [googleLogoutActions.succeed]: state => ({ ...state, fetching: false, isAuthenticated: false }),
-  [googleLogoutActions.failed]: state => ({ ...state, fetching: false })
+  [logoutActions.succeed]: state => ({ ...state, user: '', fetching: false, isAuthenticated: false }),
+  [logoutActions.failed]: state => ({ ...state, fetching: false })
 }, initialState)
 
 export default userAuth;

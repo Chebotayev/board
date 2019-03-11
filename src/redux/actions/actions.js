@@ -4,7 +4,7 @@ export const {
   registration: registrationActions,
   login: loginActions,
   googleLogin: googleLoginActions,
-  googleLogout: googleLogoutActions,
+  logout: logoutActions,
   addBoard,
   addList,
   addCart
@@ -24,7 +24,7 @@ export const {
     SUCCEED: undefined,
     FAILED: undefined
   },
-  GOOGLE_LOGOUT: {
+  LOGOUT: {
     PROCESSING: undefined,
     SUCCEED: undefined,
     FAILED: undefined

@@ -1,14 +1,15 @@
 import { put, takeLatest } from 'redux-saga/effects';
-import { googleLogoutActions } from '../actions/actions';
+import { logoutActions } from '../actions/actions';
 
-function* googleLogout() {
+function* logout() {
   try {
-    yield put(googleLogoutActions.succeed())
+    yield put(logoutActions.succeed());
+    localStorage.setItem('token', '')
   } catch (e) {
-    yield put(googleLogoutActions.failed())
+    yield put(logoutActions.failed())
   }
 }
 
-export function* googleLogoutWatcher(){
-  yield takeLatest(googleLogoutActions.processing, googleLogout)
+export function* logoutSagaWatcher(){
+  yield takeLatest(logoutActions.processing, logout)
 }
