@@ -11,7 +11,7 @@ const instance = axios.create({
 
 instance.interceptors.response.use(response => response, error => {
   const res = error.response;
-  if (res.status === 401) store.dispatch(logoutActions.processing);
+  if (res.status === 401) store.dispatch(logoutActions.processing());
   return error
 })
 

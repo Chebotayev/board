@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux'
 import { isAuthenticated } from '../../redux/selectors/userAuthSelector';
@@ -10,12 +10,12 @@ import LogoutButton from '../LogoutButton';
 const Home = ({ isAuthenticated }) => (<div>
   {
     isAuthenticated ?
-      <LogoutButton />
+      <LogoutButton /> 
       :
-      <Fragment>
-        <Link to='/signup'>Sign up</Link>
-        <Link to='/signin'>Sign in</Link>
-      </Fragment>
+      <div className='auth-panel'>
+        <Link className='auth-panel--link' to='/signup'>Sign up</Link>
+        <Link className='auth-panel--link' to='/signin'>Sign in</Link>
+      </div>
   }
 
   <BoardsList isAuth={isAuthenticated} />

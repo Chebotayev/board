@@ -5,7 +5,7 @@ import history from '../../router/history';
 
 import Routes from '../../router/components/routes';
 
-
+import '../../assets/main.scss'
 export default class App extends Component {
   render() {
     return (

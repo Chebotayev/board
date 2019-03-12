@@ -22,16 +22,16 @@ const RegistrationForm = ({ registrationProcessing }) => {
         password: ''
       }}
       render={({ handleSubmit, pristine, invalid }) => (
-        <form onSubmit={handleSubmit}>
-          <div>
+        <form onSubmit={handleSubmit} className='auth-form'>
+          <div className='auth-form--field'>
             <label htmlFor="email">Email</label>
             <Field name='email' component='input' type='text' />
           </div>
-          <div>
+          <div className='auth-form--field'>
             <label htmlFor="password">Password</label>
             <Field name='password' component='input' type='password' />
           </div>
-          <div>
+          <div className='auth-form--field'>
             <label htmlFor="passRepeat">Repeat password</label>
             <Field name='passRepeat' component='input' type='password' />
           </div>
