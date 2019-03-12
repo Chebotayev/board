@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { isAuthenticated } from '../../redux/selectors/userAuthSelector';
 
 //components
-import BoardsList from '../BoardsList';
+import Boards from '../Boards';
 import LogoutButton from '../LogoutButton';
 
 const Home = ({ isAuthenticated }) => (<div>
@@ -18,7 +18,7 @@ const Home = ({ isAuthenticated }) => (<div>
       </div>
   }
 
-  <BoardsList isAuth={isAuthenticated} />
+  <Boards isAuth={isAuthenticated} />
 </div>)
 
 

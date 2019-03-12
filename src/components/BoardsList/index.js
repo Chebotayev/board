@@ -1,13 +1,37 @@
 import React from 'react';
-import BoardForm from '../BoardForm'
-import Boards from '../Boards';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { getBoardsActions } from '../../redux/actions'
 
+//selector
+import { getAllBoards } from '../../redux/selectors/boardsSelector';
 
-const BoardsList = ({ isAuth }) => {
+//effects
+import { didMountEffect } from '../../effects/didMountEffect'
 
-  return isAuth && (<div>
-    <BoardForm />
-    <Boards />
-  </div>)
+const BoardsList = ({ boards, getBoards }) => {
+
+  didMountEffect(getBoards);
+
+  return (
+    <>
+      {boards.map(({ name, id }) => {
+        return <Link key={id} to={`/board/:${id}`}>
+          <div className='board'>
+            <h3>{name}</h3>
+          </div>
+        </Link>
+      })}
+    </>
+  )
 }
-export default BoardsList;
+
+const mapStateToProps = state => ({
+  boards: getAllBoards(state)
+});
+
+const mapDispatchToProps = {
+  getBoards: getBoardsActions.processing
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(BoardsList)
