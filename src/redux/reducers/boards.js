@@ -1,16 +1,17 @@
-import { handleActions } from 'redux-actions';
-import { addBoard } from '../actions/actions'
+import { handleActions, combineActions } from 'redux-actions';
+import { addBoardActions } from '../actions';
+import { getBoardsActions } from '../actions'
 
-const initialState = [{
-  name: 'test board',
-  boardId: 'qwertyuiop',
-  lists: []
-}]
+const initialState = {
+  boards: [],
+  fetching: false
+}
 
 
 const boards = handleActions({
-  [addBoard.succeed]: (state, action) => [...state, action.payload],
-  [addBoard.failed]: state => state
+  [combineActions(addBoardActions.processing, getBoardsActions.processing)]: state => ({ ...state, fetching: true }),
+  [combineActions(addBoardActions.succeed, getBoardsActions.succeed)]: (state, { payload }) => ({ ...state, boards: payload.boards, fetching: false }),
+  [combineActions(addBoardActions.failed, getBoardsActions.failed)]: state => ({...state, fetching: false})
 }, initialState)
 
 export default boards;

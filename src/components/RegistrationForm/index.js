@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { registrationActions } from '../../redux/actions/actions';
+import { registrationActions } from '../../redux/actions';
 import { Form, Field } from 'react-final-form'
 
 

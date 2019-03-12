@@ -5,7 +5,8 @@ export const {
   login: loginActions,
   googleLogin: googleLoginActions,
   logout: logoutActions,
-  addBoard,
+  addBoard: addBoardActions,
+  getBoards: getBoardsActions,
   addList,
   addCart
 } = createActions({
@@ -25,6 +26,11 @@ export const {
     FAILED: undefined
   },
   LOGOUT: {
+    PROCESSING: undefined,
+    SUCCEED: undefined,
+    FAILED: undefined
+  },
+  GET_BOARDS: {
     PROCESSING: undefined,
     SUCCEED: undefined,
     FAILED: undefined

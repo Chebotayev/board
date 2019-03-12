@@ -4,5 +4,5 @@ const getBoards = state => state.boards;
 
 export const getAllBoards = createSelector(
   getBoards,
-  boards => boards
+  boardsList => boardsList.boards
 )

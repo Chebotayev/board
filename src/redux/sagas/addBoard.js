@@ -1,14 +1,22 @@
-import { put, takeLatest } from 'redux-saga/effects';
-import { addBoard } from '../actions/actions';
+import { put, takeLatest, call } from 'redux-saga/effects';
+import { addBoardActions } from '../actions';
+import api from '../../api';
 
-function* addNewBoard({ payload }) {
+function fetchAddBoard(name) {
+  return api.boards.addBoard({
+    name
+  })
+}
+
+function* addBoard({ payload: { name } }) {
   try {
-    yield put(addBoard.succeed({...payload}))
+    const response = yield call(fetchAddBoard, name)
+    yield put(addBoardActions.succeed(response.data))
   } catch (e) {
-    yield put(addBoard.failed())
+    yield put(addBoardActions.failed())
   }
 }
 
 export function* addBoardWatcher() {
-  yield takeLatest(addBoard.processing, addNewBoard)
+  yield takeLatest(addBoardActions.processing, addBoard)
 }

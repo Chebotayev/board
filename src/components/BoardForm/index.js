@@ -1,9 +1,7 @@
 import React from 'react';
 import { Form, Field } from 'react-final-form';
-import { addBoard } from '../../redux/actions/actions';
+import { addBoardActions } from '../../redux/actions';
 import { connect } from 'react-redux';
-
-import { createId } from '../../utils/createId'
 
 
 const BoardForm = ({ addBoard }) => {
@@ -11,8 +9,6 @@ const BoardForm = ({ addBoard }) => {
   const onSubmit = values => {
     addBoard({
       name: values['form-name'],
-      id: createId(),
-      lists: []
     })
   };
 
@@ -33,7 +29,7 @@ const BoardForm = ({ addBoard }) => {
 }
 
 const mapDispatchToProps = {
-  addBoard: addBoard.processing
+  addBoard: addBoardActions.processing
 }
 
 const mapStateToProps = state => ({
