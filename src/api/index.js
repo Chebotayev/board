@@ -1,18 +1,23 @@
 import axios from 'axios';
 import store from '../redux/store';
-import { logoutActions } from '../redux/actions'
+import { logoutActions } from '../redux/actions';
 
-const token = localStorage.getItem('token');
+const getToken = () => localStorage.getItem('token');
 
 const instance = axios.create({
   baseURL: 'https://board-server.herokuapp.com/',
-  headers: { 'Authorization': `Bearer ${token}` },
 });
+
+instance.interceptors.request.use(config => {
+  const token = getToken();
+  if (token) config.headers.Authorization = `Bearer ${token}`;
+  return config
+}, error => Promise.reject(error))
 
 instance.interceptors.response.use(response => response, error => {
   const res = error.response;
-  if (res.status === 401) store.dispatch(logoutActions.processing);
-  return error
+  if (res.status === 401) store.dispatch(logoutActions.processing());
+  return Promise.reject(error)
 })
 
 const api = {

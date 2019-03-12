@@ -4,14 +4,19 @@ import { connect } from 'react-redux';
 
 //selectors
 import { isAuthenticated } from '../../../redux/selectors/userAuthSelector'
+import LogoutButton from '../../../components/LogoutButton';
 
 
 const CustomRoute = ({ path, component: Component, isAuth }) => (
   isAuth ?
-    <Route
-      path={path}
-      component={Component}
-    /> : <Redirect to="/" />
+    <>
+      <LogoutButton />
+      <Route
+        path={path}
+        component={Component}
+      />
+    </>
+    : <Redirect to="/" />
 );
 
 const mapStateToProps = state => ({

@@ -11,7 +11,7 @@ const LoginForm = ({ loginProcessing }) => {
   return (
     <Form
       onSubmit={onSubmit}
-      render={({ handleSubmit }) => (
+      render={({ handleSubmit, pristine, invalid }) => (
         <form onSubmit={handleSubmit}>
           <div>
             <label htmlFor="email">Email</label>
@@ -21,7 +21,7 @@ const LoginForm = ({ loginProcessing }) => {
             <label htmlFor="password">Password</label>
             <Field name='password' component='input' type='password' />
           </div>
-          <button type='submit'>Submit</button>
+          <button type='submit' disabled={pristine || invalid}>Submit</button>
         </form>
       )} />
   )

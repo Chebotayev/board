@@ -1,13 +1,16 @@
 import React from 'react';
-import BoardForm from '../BoardForm'
-import Boards from '../Boards';
 
+//components 
+import Board from './Board';
 
-const BoardsList = ({ isAuth }) => {
-
-  return isAuth && (<div>
-    <BoardForm />
-    <Boards />
-  </div>)
+const BoardsList = ({ boards }) => {
+  return (
+    <>
+      {boards.map(({ name, id }) => {
+        return <Board key={id} id={id} name={name} />
+      })}
+    </>
+  )
 }
+
 export default BoardsList;

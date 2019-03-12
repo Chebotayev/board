@@ -7,8 +7,10 @@ export const {
   logout: logoutActions,
   addBoard: addBoardActions,
   getBoards: getBoardsActions,
-  addList,
-  addCart
+  getLists: getListsActions,
+  addList: addListActions,
+  getCards: getCardsActions,
+  addCard: addCardActions
 } = createActions({
   REGISTRATION: {
     PROCESSING: undefined,
@@ -40,12 +42,22 @@ export const {
     SUCCEED: undefined,
     FAILED: undefined
   },
+  GET_LISTS: {
+    PROCESSING: undefined,
+    SUCCEED: undefined,
+    FAILED: undefined
+  },
   ADD_LIST: {
     PROCESSING: undefined,
     SUCCEED: undefined,
     FAILED: undefined
   },
-  ADD_CART: {
+  GET_CARDS: {
+    PROCESSING: undefined,
+    SUCCEED: undefined,
+    FAILED: undefined
+  },
+  ADD_CARD: {
     PROCESSING: undefined,
     SUCCEED: undefined,
     FAILED: undefined

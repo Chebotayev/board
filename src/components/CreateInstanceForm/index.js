@@ -1,13 +1,12 @@
 import React from 'react';
 import { Form, Field } from 'react-final-form';
-import { addBoardActions } from '../../redux/actions';
+import { addBoardActions, addListActions } from '../../redux/actions';
 import { connect } from 'react-redux';
 
 
-const BoardForm = ({ addBoard }) => {
-
+const CreateInstanceForm = ({ handleSubmit, name }) => {
   const onSubmit = values => {
-    addBoard({
+    handleSubmit({
       name: values['form-name'],
     })
   };
@@ -18,7 +17,7 @@ const BoardForm = ({ addBoard }) => {
       render={({ handleSubmit }) => (
         <form onSubmit={handleSubmit}>
           <div>
-            <label htmlFor="form-name">Type board name</label>
+            <label htmlFor="form-name">Type {name} name</label>
             <Field name='form-name' component='input' type='text' />
           </div>
           <button type='submit'>Add</button>
@@ -29,11 +28,8 @@ const BoardForm = ({ addBoard }) => {
 }
 
 const mapDispatchToProps = {
-  addBoard: addBoardActions.processing
+  addBoard: addBoardActions.processing,
+  addList: addListActions.processing
 }
 
-const mapStateToProps = state => ({
-
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(BoardForm);
+export default connect(null, mapDispatchToProps)(CreateInstanceForm);
