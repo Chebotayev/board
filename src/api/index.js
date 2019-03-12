@@ -12,12 +12,12 @@ instance.interceptors.request.use(config => {
   const token = getToken();
   if (token) config.headers.Authorization = `Bearer ${token}`;
   return config
-}, error => error)
+}, error => Promise.reject(error))
 
 instance.interceptors.response.use(response => response, error => {
   const res = error.response;
   if (res.status === 401) store.dispatch(logoutActions.processing());
-  return error
+  return Promise.reject(error)
 })
 
 const api = {

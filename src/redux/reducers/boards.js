@@ -1,6 +1,5 @@
 import { handleActions, combineActions } from 'redux-actions';
-import { addBoardActions } from '../actions';
-import { getBoardsActions } from '../actions'
+import { addBoardActions, getBoardsActions } from '../actions';
 
 const initialState = {
   boards: [],

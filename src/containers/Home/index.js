@@ -2,23 +2,21 @@ import React from 'react'
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux'
 import { isAuthenticated } from '../../redux/selectors/userAuthSelector';
+import { logoutActions } from '../../redux/actions';
 
 //components
-import Boards from '../Boards';
-import LogoutButton from '../LogoutButton';
+import LogoutButton from '../../components/LogoutButton';
 
-const Home = ({ isAuthenticated }) => (<div>
+const Home = ({ isAuthenticated, logout }) => (<div>
   {
     isAuthenticated ?
-      <LogoutButton /> 
+      <LogoutButton handleClick={logout}/> 
       :
       <div className='auth-panel'>
         <Link className='auth-panel--link' to='/signup'>Sign up</Link>
         <Link className='auth-panel--link' to='/signin'>Sign in</Link>
       </div>
   }
-
-  <Boards isAuth={isAuthenticated} />
 </div>)
 
 
@@ -26,5 +24,7 @@ const mapStateToProps = state => ({
   isAuthenticated: isAuthenticated(state)
 })
 
-
-export default connect(mapStateToProps)(Home);
+const mapDispatchToProps = {
+  logout: logoutActions.processing
+}
+export default connect(mapStateToProps, mapDispatchToProps)(Home);

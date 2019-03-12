@@ -8,9 +8,9 @@ import { Form, Field } from 'react-final-form'
 const RegistrationForm = ({ registrationProcessing }) => {
 
   const onSubmit = values => {
-    registrationProcessing({
-      email: values ? values.email : '',
-      password: values ? values.password : ''
+    if (values.password === values.passRepeat) registrationProcessing({
+      email: values.email,
+      password: values.password
     });
   }
 
@@ -19,7 +19,8 @@ const RegistrationForm = ({ registrationProcessing }) => {
       onSubmit={onSubmit}
       initialValues={{
         email: '',
-        password: ''
+        password: '',
+        passRepeat: '',
       }}
       render={({ handleSubmit, pristine, invalid }) => (
         <form onSubmit={handleSubmit} className='auth-form'>
