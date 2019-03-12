@@ -22,7 +22,7 @@ const api = {
   },
   boards: {
     getBoards: () => instance.get('/boards'),
-    addBoard: data => instance.post('/board', data)
+    addBoard: data => instance.post('/boards', data)
   }
 };
 

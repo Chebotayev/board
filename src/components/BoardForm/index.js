@@ -3,16 +3,12 @@ import { Form, Field } from 'react-final-form';
 import { addBoardActions } from '../../redux/actions';
 import { connect } from 'react-redux';
 
-import { createId } from '../../utils/createId'
-
 
 const BoardForm = ({ addBoard }) => {
 
   const onSubmit = values => {
     addBoard({
       name: values['form-name'],
-      id: createId(),
-      lists: []
     })
   };
 
