@@ -4,9 +4,12 @@ import { addBoardActions, addListActions } from '../../redux/actions';
 import { connect } from 'react-redux';
 
 
-const CreateInstanceForm = ({ handleSubmit, name }) => {
+const CreateInstanceForm = ({ handleSubmit, name, id }) => {
   const onSubmit = values => {
-    handleSubmit({
+    id ? handleSubmit({
+      name: values['form-name'],
+      id
+    }) : handleSubmit({
       name: values['form-name'],
     })
   };

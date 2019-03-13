@@ -27,3 +27,24 @@
     }
   }
 }
+
+.loader-wrapper{
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #00000075;
+  z-index: 999;
+}
+.loader{
+  font-size: 50px;
+  color: #024d02db;
+  animation: spinner 1.4s linear infinite;
+}
+@keyframes spinner {
+  to {transform: rotate(360deg);}
+}

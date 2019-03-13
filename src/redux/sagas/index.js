@@ -4,6 +4,8 @@ import { loginSagaWatcher } from './login';
 import { logoutSagaWatcher } from './logout'
 import { addBoardWatcher } from './addBoard'
 import { getBoardsSagaWatcher } from './getBoards';
+import { addListWatcher } from './addList';
+import { getListsSagaWatcher } from './getLists'
 
 export default function* rootSaga() {
   yield all([
@@ -11,6 +13,8 @@ export default function* rootSaga() {
     call(registrationSagaWatcher),
     call(addBoardWatcher),
     call(logoutSagaWatcher),
-    call(getBoardsSagaWatcher)
+    call(getBoardsSagaWatcher),
+    call(addListWatcher),
+    call(getListsSagaWatcher)
   ])
 }

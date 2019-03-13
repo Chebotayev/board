@@ -5,3 +5,4 @@ export const didMountEffect = action => {
     action();
   }, [])
 }
+
