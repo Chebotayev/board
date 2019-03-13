@@ -4,13 +4,16 @@ import { connect } from 'react-redux';
 
 //selectors
 import { isAuthenticated } from '../../../redux/selectors/userAuthSelector'
+import { logoutActions } from '../../../redux/actions';
+
+//components 
 import LogoutButton from '../../../components/LogoutButton';
 
 
-const CustomRoute = ({ path, component: Component, isAuth }) => (
+const CustomRoute = ({ path, component: Component, isAuth, logout }) => (
   isAuth ?
     <>
-      <LogoutButton />
+      <LogoutButton handleClick={logout}/>
       <Route
         path={path}
         component={Component}
@@ -23,4 +26,8 @@ const mapStateToProps = state => ({
   isAuth: isAuthenticated(state)
 });
 
-export default connect(mapStateToProps)(CustomRoute);
+const mapDispatchToProps = {
+  logout: logoutActions.processing,
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(CustomRoute);

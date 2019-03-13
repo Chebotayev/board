@@ -12,13 +12,10 @@ const userAuth = handleActions({
     state => ({ ...state, fetching: true }),
   [combineActions(registrationActions.succeed, googleLoginActions.succeed, loginActions.succeed)]: (
     state,
-    { payload }
-  ) => (
-      { ...state, user: payload.email, isAuthenticated: true, fetching: false }
-    ),
-  [combineActions(registrationActions.failed, loginActions.failed, googleLoginActions.failed)]:
-    state => ({ ...state, fetching: false, isAuthenticated: false }),
-  [logoutActions.succeed]: state => ({ ...state, user: '', fetching: false, isAuthenticated: false }),
+    { payload: { email } }
+  ) => ({ ...state, user: email, isAuthenticated: true, fetching: false }),
+  [combineActions(registrationActions.failed, loginActions.failed, googleLoginActions.failed, logoutActions.succeed)]:
+    () => ({ ...initialState }),
   [logoutActions.failed]: state => ({ ...state, fetching: false })
 }, initialState)
 
