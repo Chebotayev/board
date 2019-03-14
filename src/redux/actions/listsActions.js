@@ -3,8 +3,12 @@ import { subActions } from './subActions'
 
 export const {
   getLists,
-  addList
+  addList,
+  clearLists
 } = createActions({
   GET_LISTS: subActions,
   ADD_LIST: subActions,
+  CLEAR_LISTS: {
+    CLEAR: undefined
+  }
 })
