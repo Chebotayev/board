@@ -3,8 +3,12 @@ import { subActions } from './subActions'
 
 export const {
   getBoards,
-  addBoard
+  addBoard,
+  clearBoards,
 } = createActions({
   GET_BOARDS: subActions,
   ADD_BOARD: subActions,
+  CLEAR_BOARDS: {
+    CLEAR: undefined
+  }
 })

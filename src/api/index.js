@@ -28,6 +28,10 @@ const api = {
   boards: {
     getBoards: () => instance.get('/boards'),
     addBoard: data => instance.post('/boards', data)
+  },
+  lists: {
+    getLists: id => instance.get(`/lists/${id}`),
+    addList: data => instance.post('/lists', data)
   }
 };
 

@@ -3,9 +3,14 @@ import { connect } from 'react-redux';
 import { registrationActions } from '../../redux/actions';
 import { Form, Field } from 'react-final-form'
 
+//selector
+import { isFetching } from '../../redux/selectors/userAuthSelector';
+
+//components
+import Loader from '../../components/Loader';
 
 
-const RegistrationForm = ({ registrationProcessing }) => {
+const RegistrationForm = ({ registrationProcessing, fetching }) => {
 
   const onSubmit = values => {
     if (values.password === values.passRepeat) registrationProcessing({
@@ -15,6 +20,7 @@ const RegistrationForm = ({ registrationProcessing }) => {
   }
 
   return (
+    <>
     <Form
       onSubmit={onSubmit}
       initialValues={{
@@ -39,8 +45,9 @@ const RegistrationForm = ({ registrationProcessing }) => {
           <button type='submit' label='submit' disabled={pristine || invalid}>Submit</button>
         </form>
       )}
-
     />
+    {fetching && <Loader/>}
+    </>
   )
 }
 
@@ -48,5 +55,9 @@ const mapDispatchToProps = {
   registrationProcessing: registrationActions.processing
 }
 
-export default connect(null, mapDispatchToProps)(RegistrationForm)
+const mapStateToProps = state => ({
+  fetching: isFetching(state)
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(RegistrationForm)
 
