@@ -3,8 +3,12 @@ import { subActions } from './subActions'
 
 export const {
   getCards,
-  addCard
+  addCard,
+  clearCards
 } = createActions({
   GET_CARDS: subActions,
   ADD_CARD: subActions,
+  CLEAR_CARDS: {
+    CLEAR: undefined
+  }
 })

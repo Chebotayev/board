@@ -1,10 +1,14 @@
+//@flow
 import React from 'react';
 
 //components 
 import Board from './Board';
-// import Loader from '../Loader';
 
-const BoardsList = ({ boards }) => {
+type Props = {
+  boards: Array<object>
+}
+
+const BoardsList = ({ boards }: Props) => {
   return (
     <>
       {boards.map(({ name, id }) => {

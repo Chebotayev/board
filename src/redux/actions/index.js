@@ -16,7 +16,8 @@ import {
 } from './listsActions';
 import {
   getCards as getCardsActions,
-  addCard as addCardActions
+  addCard as addCardActions,
+  clearCards as clearCardsActions
 } from './cardsActions'
 
 
@@ -33,5 +34,6 @@ export {
   addListActions,
   clearListsActions,
   getCardsActions,
-  addCardActions
+  addCardActions,
+  clearCardsActions
 }

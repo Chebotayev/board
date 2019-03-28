@@ -32,6 +32,10 @@ const api = {
   lists: {
     getLists: id => instance.get(`/lists/${id}`),
     addList: data => instance.post('/lists', data)
+  },
+  cards: {
+    getCards: id => instance.get(`/cards/${id}`),
+    addCard: data => instance.post('/cards', data)
   }
 };
 
