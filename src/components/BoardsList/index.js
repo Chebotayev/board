@@ -4,14 +4,10 @@ import React from 'react';
 import Board from './Board';
 // import Loader from '../Loader';
 
-const BoardsList = ({ boards }) => {
-  return (
-    <>
-      {boards.map(({ name, id }) => {
-        return <Board key={id} id={id} name={name} />
-      })}
-    </>
-  )
-}
+const BoardsList = ({ boards }) => (
+  <>
+    {boards.map(({ name, id }) => <Board key={id} id={id} name={name} />)}
+  </>
+);
 
 export default BoardsList;
