@@ -1,8 +1,8 @@
+//@flow
 import React from 'react';
 
 //components 
 import Board from './Board';
-// import Loader from '../Loader';
 
 const BoardsList = ({ boards }) => (
   <>

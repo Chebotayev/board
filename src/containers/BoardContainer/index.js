@@ -21,10 +21,13 @@ const BoardsContainer = ({ boards, getBoards, addBoard, fetching, clearBoards })
   }, [])
 
   return (
-    <>
+    <div className='list-wrapper'>
       <CreateInstanceForm handleSubmit={addBoard} name='board' />
-      {fetching ? <Loader /> : <BoardsList boards={boards} />}
-    </>
+      {fetching ? <Loader /> :
+        <div className='boards-list'>
+          <BoardsList boards={boards} />
+        </div>}
+    </div>
   )
 }
 

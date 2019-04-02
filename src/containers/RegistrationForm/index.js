@@ -1,13 +1,16 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { registrationActions } from '../../redux/actions';
-import { Form, Field } from 'react-final-form'
+import { Form, Field } from 'react-final-form';
+import TextField from '@material-ui/core/TextField'
 
 //selector
 import { isFetching } from '../../redux/selectors/userAuthSelector';
 
 //components
 import Loader from '../../components/Loader';
+import { Button } from '@material-ui/core';
+
 
 
 const RegistrationForm = ({ registrationProcessing, fetching }) => {
@@ -21,32 +24,49 @@ const RegistrationForm = ({ registrationProcessing, fetching }) => {
 
   return (
     <>
-    <Form
-      onSubmit={onSubmit}
-      initialValues={{
-        email: '',
-        password: '',
-        passRepeat: '',
-      }}
-      render={({ handleSubmit, pristine, invalid }) => (
-        <form onSubmit={handleSubmit} className='auth-form'>
-          <div className='auth-form--field'>
-            <label htmlFor="email">Email</label>
-            <Field name='email' component='input' type='text' />
+      <Form
+        onSubmit={onSubmit}
+        initialValues={{
+          email: '',
+          password: '',
+          passRepeat: '',
+        }}
+        render={({ handleSubmit, pristine, invalid }) => (
+          <div className='form-wrapper'>
+            <form onSubmit={handleSubmit} className='auth-form'>
+              <div className='auth-form--field'>
+                <Field
+                  name='email'
+                  component={TextField}
+                  type='text'
+                  label='Email'
+                  variant='outlined'
+                />
+              </div>
+              <div className='auth-form--field'>
+                <Field
+                  name='password'
+                  component={TextField}
+                  type='password'
+                  label='Password'
+                  variant='outlined'
+                />
+              </div>
+              <div className='auth-form--field'>
+                <Field
+                  name='passRepeat'
+                  component={TextField}
+                  type='password'
+                  label='Repeat password'
+                  variant='outlined'
+                />
+              </div>
+              <Button type='submit' label='submit' variant="contained" color="primary">Submit</Button>
+            </form>
           </div>
-          <div className='auth-form--field'>
-            <label htmlFor="password">Password</label>
-            <Field name='password' component='input' type='password' />
-          </div>
-          <div className='auth-form--field'>
-            <label htmlFor="passRepeat">Repeat password</label>
-            <Field name='passRepeat' component='input' type='password' />
-          </div>
-          <button type='submit' label='submit' disabled={pristine || invalid}>Submit</button>
-        </form>
-      )}
-    />
-    {fetching && <Loader/>}
+        )}
+      />
+      {fetching && <Loader />}
     </>
   )
 }

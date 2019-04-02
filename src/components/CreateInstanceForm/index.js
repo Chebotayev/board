@@ -6,23 +6,37 @@ import { connect } from 'react-redux';
 
 const CreateInstanceForm = ({ handleSubmit, name, id }) => {
   const onSubmit = values => {
-    id ? handleSubmit({
-      name: values['form-name'],
-      id
-    }) : handleSubmit({
-      name: values['form-name'],
-    })
+    const instanceSubmit = {
+      board: () => handleSubmit({
+        name: values['form-name'],
+      }),
+      list: () => handleSubmit({
+        name: values['form-name'],
+        id
+      }),
+      card: () => handleSubmit({
+        name: values['form-name'],
+        description: values['form-description'],
+        id
+      })
+    }
+    
+    instanceSubmit[name]();
   };
 
   return (<div>
     <Form
       onSubmit={onSubmit}
       render={({ handleSubmit }) => (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className='instance-form'>
           <div>
             <label htmlFor="form-name">Type {name} name</label>
             <Field name='form-name' component='input' type='text' />
           </div>
+          {name === 'card' && <div>
+            <label htmlFor="form-description">Type {name} description</label>
+            <Field name='form-description' component='input' type='text' />
+          </div>}
           <button type='submit'>Add</button>
         </form>
       )} />

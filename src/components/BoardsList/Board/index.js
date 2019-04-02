@@ -1,8 +1,15 @@
+// @flow
+
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const Board = ({id, name}) => (<Link to={`/boards/${id}`}>
-  <div className='board'>
+// type Props = {
+//   id: number,
+//   name: string
+// }
+
+const Board = ({ id, name }) => (<Link className='boards-list--board-wrapper' to={`/boards/${id}`}>
+  <div className='boards-list--board-wrapper--board'>
     <h3>{name}</h3>
   </div>
 </Link>)

@@ -5,7 +5,8 @@ import { logoutSagaWatcher } from './logout'
 import { addBoardWatcher } from './addBoard'
 import { getBoardsSagaWatcher } from './getBoards';
 import { addListWatcher } from './addList';
-import { getListsSagaWatcher } from './getLists'
+import { getListsSagaWatcher } from './getLists';
+import { getCardsSagaWatcher } from './getCards'
 
 export default function* rootSaga() {
   yield all([
@@ -15,6 +16,7 @@ export default function* rootSaga() {
     call(logoutSagaWatcher),
     call(getBoardsSagaWatcher),
     call(addListWatcher),
-    call(getListsSagaWatcher)
+    call(getListsSagaWatcher),
+    call(getCardsSagaWatcher)
   ])
 }

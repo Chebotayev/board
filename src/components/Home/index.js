@@ -1,20 +1,12 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import AuthPanel from '../AuthPanel';
+import HomeInformation from '../HomeInformation';
 
-//components 
-import LogoutButton from '../LogoutButton';
+const Home = () => <div className='home-wrapper'>
+  <AuthPanel />
+  <HomeInformation />
+</div>
 
-const Home = ({ isAuthenticated, handleClick }) => (<div>
-  {
-    isAuthenticated ?
-      <LogoutButton handleClick={handleClick} />
-      :
-      <div className='auth-panel'>
-        <Link className='auth-panel--link' to='/signup'>Sign up</Link>
-        <Link className='auth-panel--link' to='/signin'>Sign in</Link>
-      </div>
-  }
-</div>)
 
 
 export default Home;

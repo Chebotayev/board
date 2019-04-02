@@ -1,34 +1,14 @@
-.auth-panel{
+$brand-color: #024d02db;
+
+.auth-panel {
   max-width: 500px;
   display: flex;
   width: 100%;
   margin: 20px auto;
   justify-content: space-around;
-
-  &--link{
-    text-decoration: none;
-    color: white;
-    display: block;
-    height: 50px;
-    width: 200px;
-    background-color: #024d02db;
-    text-align: center;
-    font-size: 25px;
-    line-height: 50px;
-    font-family: cursive;
-    font-weight: bold;
-    border: 1px solid black;
-    border-radius: 30px;
-
-    &:hover{
-      color: black;
-      background-color: white;
-      transition: .5s;
-    }
-  }
 }
 
-.loader-wrapper{
+.loader-wrapper {
   position: fixed;
   top: 0;
   left: 0;
@@ -40,11 +20,92 @@
   background: #00000075;
   z-index: 999;
 }
-.loader{
+
+.loader {
   font-size: 50px;
-  color: #024d02db;
+  color: $brand-color;
   animation: spinner 1.4s linear infinite;
 }
+
 @keyframes spinner {
-  to {transform: rotate(360deg);}
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.boards-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 50px;
+
+  &--board-wrapper {
+    text-decoration: none;
+    color: black;
+
+    &--board {
+      height: 200px;
+      width: 200px;
+      border: 1px solid red;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 20px;
+
+      & h3 {
+        margin: 0;
+      }
+    }
+  }
+}
+
+.list-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 40px;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  max-width: 350px;
+  width: 100%;
+  margin: auto;
+
+  & p {
+    font-size: 20px;
+  }
+}
+
+
+.form-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40vh;
+}
+
+.home-wrapper {
+  height: 40vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.info {
+  max-width: 500px;
+  width: 100%;
+  margin: auto;
+  text-align: center;
+}
+
+.auth-form {
+  text-align: center;
+
+  &--field {
+    margin-bottom: 20px;
+  }
 }

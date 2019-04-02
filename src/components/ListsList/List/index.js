@@ -1,10 +1,11 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import CardsContainer from '../../../containers/CardsContainer'
 
-const List = ({ id, name }) => (<Link to={`/lists/${id}`}>
-  <div className='board'>
+const List = ({ id, name }) => (
+  <div>
     <h3>{name}</h3>
+    <CardsContainer id={id}/>
   </div>
-</Link>)
+)
 
 export default List;
