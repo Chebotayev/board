@@ -7,6 +7,11 @@ export const isAuthenticated = createSelector(
   user => user.isAuthenticated
 )
 
+export const getUserName = createSelector(
+  getUserInfo,
+  user => user.user
+)
+
 export const isFetching = createSelector(
   getUserInfo,
   user => user.fetching

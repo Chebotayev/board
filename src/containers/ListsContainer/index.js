@@ -22,7 +22,7 @@ const ListsContainer = ({ match: { params: { id } }, addList, getLists, lists, f
   }, []);
 
   return (
-    <div>
+    <div className='list-wrapper'>
       <h1>Board id {id}</h1>
       <CreateInstanceForm id={id} name='list' handleSubmit={addList} />
       {fetching ? <Loader /> : <ListsList lists={lists}/>}

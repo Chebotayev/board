@@ -2,6 +2,8 @@ import React from 'react';
 import { Form, Field } from 'react-final-form'
 import { loginActions } from '../../redux/actions';
 import { connect } from 'react-redux';
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
 
 //selector
 import { isFetching } from '../../redux/selectors/userAuthSelector';
@@ -16,20 +18,32 @@ const LoginForm = ({ loginProcessing, fetching }) => {
     <>
       <Form
         onSubmit={onSubmit}
-        render={({ handleSubmit, pristine, invalid }) => (
-          <form onSubmit={handleSubmit}>
-            <div>
-              <label htmlFor="email">Email</label>
-              <Field name='email' component='input' type='email' />
-            </div>
-            <div>
-              <label htmlFor="password">Password</label>
-              <Field name='password' component='input' type='password' />
-            </div>
-            <button type='submit' disabled={pristine || invalid}>Submit</button>
-          </form>
+        render={({ handleSubmit }) => (
+          <div className='form-wrapper'>
+            <form className='auth-form' onSubmit={handleSubmit}>
+              <div className='auth-form--field'>
+                <Field
+                  name='email'
+                  component={TextField}
+                  label='Email'
+                  type='email'
+                  variant='outlined'
+                />
+              </div>
+              <div className='auth-form--field'>
+                <Field
+                  name='password'
+                  component={TextField}
+                  label='Password'
+                  type='password'
+                  variant='outlined'
+                />
+              </div>
+              <Button type='submit' variant="contained" color="primary">Submit</Button>
+            </form>
+          </div>
         )} />
-        {fetching && <Loader />}
+      {fetching && <Loader />}
     </>
   )
 }

@@ -8,14 +8,14 @@ import CustomRoute from '../customRoute';
 //components
 import RegistrationForm from '../../../containers/RegistrationForm';
 import LoginForm from '../../../containers/LoginForm';
-import HomeContainer from '../../../containers/HomeContainer';
+import Home from '../../../components/Home';
 import ListsContainer from '../../../containers/ListsContainer'
 import NotFound from '../../../components/NotFound';
 import BoardContainer from '../../../containers/BoardContainer';
 
 const Routes = () => (
   <Switch>
-    <Route exact path='/' component={HomeContainer} />
+    <Route exact path='/' component={Home} />
     <Route path='/signin' component={LoginForm} />
     <Route path='/signup' component={RegistrationForm} />
     <CustomRoute exact path='/boards' component={BoardContainer} />

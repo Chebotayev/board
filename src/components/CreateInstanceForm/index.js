@@ -28,7 +28,7 @@ const CreateInstanceForm = ({ handleSubmit, name, id }) => {
     <Form
       onSubmit={onSubmit}
       render={({ handleSubmit }) => (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className='instance-form'>
           <div>
             <label htmlFor="form-name">Type {name} name</label>
             <Field name='form-name' component='input' type='text' />
