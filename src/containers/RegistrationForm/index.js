@@ -2,8 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { registrationActions } from '../../redux/actions';
 import { Form, Field } from 'react-final-form';
-import TextField from '@material-ui/core/TextField'
-
+import { TextField } from 'final-form-material-ui';
 //selector
 import { isFetching } from '../../redux/selectors/userAuthSelector';
 
