@@ -9,6 +9,9 @@ import Button from '@material-ui/core/Button';
 import { isFetching } from '../../redux/selectors/userAuthSelector';
 import Loader from '../../components/Loader';
 
+//validators 
+import {composeValidators, required, emailValidation} from '../../validation'
+
 const LoginForm = ({ loginProcessing, fetching }) => {
   const onSubmit = values => {
     loginProcessing({ email: values.email, password: values.password });
@@ -18,12 +21,13 @@ const LoginForm = ({ loginProcessing, fetching }) => {
     <>
       <Form
         onSubmit={onSubmit}
-        render={({ handleSubmit }) => (<div className='form-wrapper'>
+        render={({ handleSubmit, invalid, pristine }) => (<div className='form-wrapper'>
           <form className='auth-form' onSubmit={handleSubmit}>
             <div className='auth-form--field'>
               <Field
                 name='email'
                 component={TextField}
+                validate={composeValidators(required, emailValidation)}
                 label='Email'
                 type='text'
                 variant='outlined'
@@ -36,9 +40,10 @@ const LoginForm = ({ loginProcessing, fetching }) => {
                 label='Password'
                 type='password'
                 variant='outlined'
+                validate={required}
               />
             </div>
-            <Button type='submit' variant="contained" color="primary">Submit</Button>
+            <Button type='submit' variant="contained" color="primary" disabled={invalid || pristine}>Submit</Button>
           </form>
         </div>
         )} />

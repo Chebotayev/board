@@ -9,6 +9,7 @@ import { isFetching } from '../../redux/selectors/userAuthSelector';
 //components
 import Loader from '../../components/Loader';
 import { Button } from '@material-ui/core';
+import { composeValidators, required, emailValidation, passValidation } from '../../validation';
 
 
 
@@ -30,6 +31,7 @@ const RegistrationForm = ({ registrationProcessing, fetching }) => {
           password: '',
           passRepeat: '',
         }}
+        validate={values => values.password !== values.passRepeat ? ({ passRepeat: "Your passwords didn't match" }) : undefined}
         render={({ handleSubmit, pristine, invalid }) => (
           <div className='form-wrapper'>
             <form onSubmit={handleSubmit} className='auth-form'>
@@ -40,6 +42,7 @@ const RegistrationForm = ({ registrationProcessing, fetching }) => {
                   type='text'
                   label='Email'
                   variant='outlined'
+                  validate={composeValidators(required, emailValidation)}
                 />
               </div>
               <div className='auth-form--field'>
@@ -49,6 +52,7 @@ const RegistrationForm = ({ registrationProcessing, fetching }) => {
                   type='password'
                   label='Password'
                   variant='outlined'
+                  validate={composeValidators(required, passValidation)}
                 />
               </div>
               <div className='auth-form--field'>
@@ -58,9 +62,10 @@ const RegistrationForm = ({ registrationProcessing, fetching }) => {
                   type='password'
                   label='Repeat password'
                   variant='outlined'
+                  validate={composeValidators(required, passValidation)}
                 />
               </div>
-              <Button type='submit' label='submit' variant="contained" color="primary">Submit</Button>
+              <Button type='submit' label='submit' variant="contained" color="primary" disabled={invalid || pristine}>Submit</Button>
             </form>
           </div>
         )}
