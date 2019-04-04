@@ -21,11 +21,6 @@ $brand-color: #024d02db;
   z-index: 999;
 }
 
-.loader {
-  font-size: 50px;
-  color: $brand-color;
-  animation: spinner 1.4s linear infinite;
-}
 
 @keyframes spinner {
   to {
@@ -108,4 +103,11 @@ $brand-color: #024d02db;
   &--field {
     margin-bottom: 20px;
   }
+}
+
+.instance-form {
+  display: flex;
+  flex-direction: column;
+  height: 100px;
+  justify-content: space-between;
 }

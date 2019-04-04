@@ -1,10 +1,9 @@
 
 import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSpinner } from '@fortawesome/free-solid-svg-icons/faSpinner';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 const Loader = () => <div className='loader-wrapper'>
-  <FontAwesomeIcon className='loader' icon={faSpinner} />
+  <CircularProgress />
 </div>
 
 export default Loader;

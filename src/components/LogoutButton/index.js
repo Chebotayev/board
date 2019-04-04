@@ -1,7 +1,9 @@
 import React from 'react';
+import { Button } from '@material-ui/core';
 
-const LogoutButton = ({ handleClick }) => <button onClick={handleClick} type='submit' className='button'>
+
+const LogoutButton = ({ handleClick }) => <Button onClick={handleClick} variant="outlined" color="primary">
   Logout
-</button>;
+</Button>;
 
 export default LogoutButton;
